@@ -51,12 +51,7 @@ class SongController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        // DEBUG (remove later)
-        Log::info('STORE payload (except files):', $request->except(['audio_file', 'cover_image']));
-        Log::info('STORE has title/artist:', [
-            'title' => $request->input('title'),
-            'artist' => $request->input('artist'),
-        ]);
+        
 
         $request->validate([
             'title' => 'required|string|min:2|max:255',
